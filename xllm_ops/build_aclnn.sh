@@ -111,6 +111,7 @@ elif [[ "$SOC_VERSION" =~ ^(ascend)?910b ]]; then
 
     CUSTOM_OPS_ARRAY=(
         "sparse_flash_attention"
+        "sparse_flash_attention_lse"
         "moe_init_routing_custom"
         "moe_gating_top_k"
         "moe_gating_top_k_hash"
@@ -154,6 +155,7 @@ elif [[ "$SOC_VERSION" =~ ^(ascend)?910b ]]; then
         "moe_init_routing_v3"
         "multi_latent_attention"
         "pp_matmul_opt"
+        "quant_matmul_nz_decode"
         "recurrent_gated_delta_rule"
         "replace_token"
         "mtp_prepare_next_draft"
@@ -185,6 +187,7 @@ elif [[ "$SOC_VERSION" =~ ^ascend910_93 ]]; then
     
     CUSTOM_OPS_ARRAY=(
         "sparse_flash_attention"
+        "sparse_flash_attention_lse"
         "moe_init_routing_custom"
         "moe_gating_top_k"
         "moe_gating_top_k_hash"
@@ -228,6 +231,7 @@ elif [[ "$SOC_VERSION" =~ ^ascend910_93 ]]; then
         "moe_grouped_matmul_swiglu_quant"
         "multi_latent_attention"
         "pp_matmul_opt"
+        "quant_matmul_nz_decode"
         "recurrent_gated_delta_rule"
         "replace_token"
         "mtp_prepare_next_draft"
@@ -285,7 +289,7 @@ elif [[ "$SOC_VERSION" =~ ^ascend950 ]]; then
         "hc_post"
         "rms_norm_dynamic_quant"
         "inplace_partial_rotary_mul"
-        "dispatch_ffn_combine"
+       # "dispatch_ffn_combine"   # A5中使用moe_mega算子替换
         "dequant_swiglu_quant"  ## 已在 CANN 中内置，删除后会有精度问题，CANN内置见 aarch64-linux/include/aclnnop/aclnn_dequant_swiglu_quant.h
         "scatter_nd_update_v2"
 
